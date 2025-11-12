@@ -160,8 +160,10 @@ Dažniausiai buvo greičiau naudoti 2 strategiją.
 **1. Palyginimas: struct vs class**
 
 Testai atlikti su vector konteineriu, greičiausia strategija (1) ir 2 failų dydžiais:  
-- `studentai100000.txt`  
-- `studentai1000000.txt`  
+```
+studentai100000.txt  
+studentai1000000.txt
+```
 
 **Strategija 1 – Du nauji konteineriai (**su struct**)**
 
