@@ -8,29 +8,30 @@ using std::cin;
 using std::endl;
 
 Studentas ivesk(std::string vard, std::string pav) {
-    Studentas Laik;
-    Laik.setVardas(vard);
-    Laik.setPavarde(pav);
+    std::vector<int> nd;
     int m;
     std::string ats;
+
     while (true) {
-        while (true) {
-            cout << "Iveskite pazymi: "; cin >> m;
-            if (!cin || m < 1 || m > 10) {
-                cout << "Ivesta neteisingai. Bandykite dar karta." << endl;
-                cin.clear();
-                cin.ignore(1000, '\n');
-                continue;
-            }
-            break;
+        cout << "Iveskite pazymi: ";
+        cin >> m;
+        if (!cin || m < 1 || m > 10) {
+            cout << "Ivesta neteisingai. Bandykite dar karta." << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
         }
-        Laik.pridetiPazymi(m);
-        cout << "Ar norite ivesti dar viena pazymi? (taip/ne): "; cin >> ats;
+        nd.push_back(m);
+        cout << "Ar norite ivesti dar viena pazymi? (taip/ne): ";
+        cin >> ats;
         if (ats == "ne") break;
     }
+
+    int egz;
     while (true) {
-        cout << "Iveskite egzamina: "; cin >> m;
-        if (!cin || m < 1 || m > 10) {
+        cout << "Iveskite egzamina: ";
+        cin >> egz;
+        if (!cin || egz < 1 || egz > 10) {
             cout << "Ivesta neteisingai. Bandykite dar karta." << endl;
             cin.clear();
             cin.ignore(1000, '\n');
@@ -38,27 +39,31 @@ Studentas ivesk(std::string vard, std::string pav) {
         }
         break;
     }
-    Laik.setEgzaminas(m);
-    Laik.skaiciuokVidurkiMediana(); // <-- prid?ta
-    return Laik;
+
+    Studentas s(vard, pav, nd, egz);
+    return s;
 }
 
 double median(std::vector<int> v) { return Studentas::median(v); }
 
 Studentas generuoti(std::string vard, std::string pav, int ndskaicius) {
-    Studentas s(vard, pav);
+    std::vector<int> nd;
     for (int i = 0; i < ndskaicius; i++)
-        s.pridetiPazymi(rand() % 10 + 1);
-    s.setEgzaminas(rand() % 10 + 1);
-    s.skaiciuokVidurkiMediana(); // <-- prid?ta
+        nd.push_back(rand() % 10 + 1);
+    int egz = rand() % 10 + 1;
+
+    Studentas s(vard, pav, nd, egz);
     return s;
 }
 
 Studentas generuotistudenta(int id, int ndskaicius) {
-    Studentas s("Vardas" + std::to_string(id), "Pavarde" + std::to_string(id));
+    std::vector<int> nd;
     for (int i = 0; i < ndskaicius; i++)
-        s.pridetiPazymi(rand() % 10 + 1);
-    s.setEgzaminas(rand() % 10 + 1);
-    s.skaiciuokVidurkiMediana(); // <-- prid?ta
+        nd.push_back(rand() % 10 + 1);
+    int egz = rand() % 10 + 1;
+
+    Studentas s("Vardas" + std::to_string(id),
+        "Pavarde" + std::to_string(id),
+        nd, egz);
     return s;
 }
