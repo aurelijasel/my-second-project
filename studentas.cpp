@@ -53,6 +53,9 @@ bool comparePagalVarda(const Studentas& a, const Studentas& b) {
 bool comparePagalPavarde(const Studentas& a, const Studentas& b) {
     return a.pavarde_ < b.pavarde_;
 }
-bool comparePagalEgzamina(const Studentas& a, const Studentas& b) {
-    return a.egzaminas_ < b.egzaminas_;
+bool comparePagalGalutiniVid(const Studentas& a, const Studentas& b) {
+    return a.getGalutinisVid() < b.getGalutinisVid();
+}
+bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b) {
+    return a.getGalutinisMed() < b.getGalutinisMed();
 }
