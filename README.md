@@ -184,23 +184,23 @@ studentai1000000.txt
 
 **2. Optimizavimo flag’ų analizė**
 
-Analizuotas class variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: `O1`, `O2`, `O3`.
+Analizuotas class variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: O1, O2, O3.
 
-**Optimizacija `O1`**
+**Optimizacija O1**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
 |--------------|---------|----------------|--------------|--------------|--------------|
 | vector | studentai100000.txt | 0.404711 | 0.228556 | 0.633267 | 14 378 544 |
 | vector | studentai1000000.txt | 4.559094 | 2.033421 | 6.592515 | 109 186 400 |
 
-**Optimizacija `O2`**
+**Optimizacija O2**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
 |--------------|---------|----------------|--------------|--------------|--------------|
 | vector | studentai100000.txt | 0.408979 | 0.199345 | 0.608324 | 14 378 544 |
 | vector | studentai1000000.txt | 4.397648 | 2.120036 | 6.517684 | 109 186 400 |
 
-**Optimizacija `O3`**
+**Optimizacija O3**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
 |--------------|---------|----------------|--------------|--------------|--------------|
