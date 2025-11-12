@@ -31,6 +31,10 @@ public:
 
     Studentas(std::istream& is) { readStudent(is); }
 
+    // --- DESTRUKTORIUS ---
+    ~Studentas() {
+    }
+
     // --- GETTERIAI ---
     inline const std::string& getVardas() const { return vardas_; }
     inline const std::string& getPavarde() const { return pavarde_; }
