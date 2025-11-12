@@ -155,7 +155,7 @@ Dažniausiai buvo greičiau naudoti 2 strategiją.
 - 2 strategija labai neefektyvi su dideliais duomenų kiekiais (1000000 ir 10000000 įrašų), nes ji kiekvienam vargšiukui naudoja erase() funkciją vector konteineryje. Kiekvienas erase() kvietimas perstumia visus likusius elementus, todėl operacijos sudėtingumas tampa O(n²).
 
 
-# Programos našumo analizė
+## Programos našumo analizė
 
 **1. Palyginimas: struct vs class**
 
