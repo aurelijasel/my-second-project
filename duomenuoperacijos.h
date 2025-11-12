@@ -23,11 +23,22 @@ void suskirstyti_stl_antros_logika(std::vector<Studentas>& grupe, char pagalkask
 template <typename Container>
 void rusiavimas_i_failus(const Container& vargsiukai, const Container& galvociai, char pagalkaskirstyti,
     const std::string& vardasFailoVargsiukai, const std::string& vardasFailoGalvociai) {
-    std::ofstream fv(vardasFailoVargsiukai);
-    std::ofstream fg(vardasFailoGalvociai);
-    if (!fv || !fg) {
-        std::cout << "Nepavyko sukurti failu" << std::endl;
+
+    if (vargsiukai.empty() && galvociai.empty()) {
+        std::cout << "Nera studentu, failai nebus kuriami." << std::endl;
         return;
+    }
+
+    std::ofstream fv, fg;
+
+    if (!vargsiukai.empty()) {
+        fv.open(vardasFailoVargsiukai);
+        if (!fv) { std::cout << "Nepavyko sukurti " << vardasFailoVargsiukai << std::endl; return; }
+    }
+
+    if (!galvociai.empty()) {
+        fg.open(vardasFailoGalvociai);
+        if (!fg) { std::cout << "Nepavyko sukurti " << vardasFailoGalvociai << std::endl; return; }
     }
 
     auto gauti_galutini = [&](const Studentas& s) {
@@ -37,6 +48,7 @@ void rusiavimas_i_failus(const Container& vargsiukai, const Container& galvociai
     for (auto& s : vargsiukai)
         fv << s.getPavarde() << " " << s.getVardas() << " Galutinis: "
         << std::fixed << std::setprecision(2) << gauti_galutini(s) << "\n";
+
     for (auto& s : galvociai)
         fg << s.getPavarde() << " " << s.getVardas() << " Galutinis: "
         << std::fixed << std::setprecision(2) << gauti_galutini(s) << "\n";
