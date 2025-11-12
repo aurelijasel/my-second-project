@@ -1,3 +1,4 @@
+
 #ifndef STUDENTAS_H
 #define STUDENTAS_H
 
@@ -28,6 +29,15 @@ public:
     inline int getEgzaminas() const { return egzaminas_; }
     inline double getGalutinisVid() const { return vidurkis_; }
     inline double getGalutinisMed() const { return mediana_; }
+
+    // Setteriai
+    inline void setVardas(const std::string& vard) { vardas_ = vard; }
+    inline void setPavarde(const std::string& pav) { pavarde_ = pav; }
+    inline void setEgzaminas(int egz) { egzaminas_ = egz; }
+    inline void setGalutinisVid(double v) { vidurkis_ = v; }
+    inline void setGalutinisMed(double m) { mediana_ = m; }
+    inline void pridetiPazymi(int paz) { nd_.push_back(paz); }
+    inline void setPazymiai(const std::vector<int>& pazymiai) { nd_ = pazymiai; }
 
     // --- SKAI?IAVIMO FUNKCIJOS ---
     void skaiciuokVidurkiMediana(); // apskai?iuoja abu rezultatus
