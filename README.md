@@ -187,6 +187,7 @@ studentai1000000.txt
 Analizuotas struct ir class variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: O1, O2, O3.
 
 **Struct analizė:**
+
 **Optimizacija O1**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
@@ -209,6 +210,7 @@ Analizuotas struct ir class variantas (strategija 1, vector) su skirtingais komp
 | vector | studentai1000000.txt | 7.709458 | 3.816911 | 11.526369 | 233186400 |
 
 **Class analizė:**
+
 **Optimizacija O1**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
