@@ -52,13 +52,10 @@ public:
     // --- PALYGINIMUI ---
     friend bool comparePagalVarda(const Studentas& a, const Studentas& b);
     friend bool comparePagalPavarde(const Studentas& a, const Studentas& b);
-    friend bool comparePagalEgzamina(const Studentas& a, const Studentas& b);
-
-    friend bool comparePagalVarda(const Studentas& a, const Studentas& b);
-    friend bool comparePagalPavarde(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniVid(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b);
 };
 
 #endif
+
 
