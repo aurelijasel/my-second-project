@@ -132,7 +132,7 @@ int main() {
         return 0;
     }
 
-    // ----- ?prastas veikimas -----
+    // ----- Iprastas veikimas -----
     std::string konteineriotipas;
     bool naudotivector = true;
     while (true) {
@@ -154,7 +154,6 @@ int main() {
         return 1;
     }
 
-    // ---- Duomen? šaltinio pasirinkimas ----
     while (true) {
         cout << "Ar norite duomenis ivesti ranka, generuoti ar nuskaityti is failo? (ranka/generuoti/failas): ";
         cin >> pasirinkimas2;
@@ -197,7 +196,6 @@ int main() {
         }
     }
 
-    // ---- Galutinio pažymio pasirinkimas ----
     while (true) {
         cout << "Pasirinkite koki galutini pazymi rodyti:\n"
             << "a - tik vidurki\n"
@@ -208,7 +206,6 @@ int main() {
         else cout << "Ivesta neteisingai. Bandykite dar karta." << endl;
     }
 
-    // ---- Rezultat? išvedimas ----
     Laikmatis laikmatis_rezultatu_rasymo;
     fout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas";
 
