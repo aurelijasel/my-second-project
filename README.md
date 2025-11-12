@@ -154,19 +154,60 @@ Dažniausiai buvo greičiau naudoti 2 strategiją.
 - Vector konteineris sunaudoja daugiau atminties.   
 - 2 strategija labai neefektyvi su dideliais duomenų kiekiais (1000000 ir 10000000 įrašų), nes ji kiekvienam vargšiukui naudoja erase() funkciją vector konteineryje. Kiekvienas erase() kvietimas perstumia visus likusius elementus, todėl operacijos sudėtingumas tampa O(n²).
 
-**Strategija 1 – Du nauji konteineriai(su struct)**
+
+# Programos našumo analizė
+
+**1. Palyginimas: struct vs class**
+
+Testai atlikti su vector konteineriu, greičiausia strategija (1) ir 2 failų dydžiais:  
+- `studentai100000.txt`  
+- `studentai1000000.txt`  
+
+**Strategija 1 – Du nauji konteineriai (**su struct**)**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
 |--------------|---------|----------------|--------------|--------------|--------------|
-| vector | studentai100000.txt | 0.957551 | 0.328320 | 1.701649 | 21620012 |
-| vector | studentai1000000.txt | 6.804002 | 1.954002 | 10.600715 | 216012312 | 
+| vector | studentai100000.txt | 0.957551 | 0.328320 | 1.701649 | 21 620 012 |
+| vector | studentai1000000.txt | 6.804002 | 1.954002 | 10.600715 | 216 012 312 | 
 
-**Strategija 1 – Du nauji konteineriai(su class)**
+**Strategija 1 – Du nauji konteineriai (**su class**)**
 
 | Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
 |--------------|---------|----------------|--------------|--------------|--------------|
-| vector | studentai100000.txt | 0.408979 | 0.199345 | 0.608324 | 14378544 |
-| vector | studentai1000000.txt | 4.397648 | 2.120036 | 6.517684 | 109186400 |
+| vector | studentai100000.txt | 0.408979 | 0.199345 | 0.608324 | 14 378 544 |
+| vector | studentai1000000.txt | 4.397648 | 2.120036 | 6.517684 | 109 186 400 |
+
+**Išvada:**  
+`class` versijos veikimas yra spartesnis ir atminties atžvilgiu efektyvesnis.
+
+**2. Optimizavimo flag’ų analizė**
+
+Analizuotas `class` variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: `O1`, `O2`, `O3`.
+
+**Optimizacija `O1`**
+
+| Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
+|--------------|---------|----------------|--------------|--------------|--------------|
+| vector | studentai100000.txt | 0.404711 | 0.228556 | 0.633267 | 14 378 544 |
+| vector | studentai1000000.txt | 4.559094 | 2.033421 | 6.592515 | 109 186 400 |
+
+**Optimizacija `O2`**
+
+| Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
+|--------------|---------|----------------|--------------|--------------|--------------|
+| vector | studentai100000.txt | 0.408979 | 0.199345 | 0.608324 | 14 378 544 |
+| vector | studentai1000000.txt | 4.397648 | 2.120036 | 6.517684 | 109 186 400 |
+
+**Optimizacija `O3`**
+
+| Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
+|--------------|---------|----------------|--------------|--------------|--------------|
+| vector | studentai100000.txt | 0.422925 | 0.216015 | 0.638940 | 14 378 544 |
+| vector | studentai1000000.txt | 5.140793 | 2.245802 | 7.386596 | 109 186 400 |
+
+**3. Apibendrinimas**
+
+- O2 yra stabiliausias ir greičiausias optimizacijos pasirinkimas.  
 
 
 ## Rankinis įvedimas
