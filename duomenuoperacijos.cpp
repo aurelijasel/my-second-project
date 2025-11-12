@@ -19,26 +19,54 @@ std::vector<Studentas> nuskaityti(std::string failas) {
     std::vector<Studentas> Grupe;
     std::ifstream fd(failas);
     if (!fd) {
-        std::cout << "Nepavyko atidaryti failo: " << failas << std::endl;
+        cout << "Nepavyko atidaryti failo: " << failas << endl;
         return Grupe;
     }
+
     std::string antraste;
     getline(fd, antraste);
-    
+
     std::string eilute;
     while (getline(fd, eilute)) {
         std::istringstream ss(eilute);
-        
-        try {
-            Studentas s(ss); // konstruktorius su istream jau kvie?ia readStudent()
-            Grupe.push_back(s);
+        Studentas Laik;
+        std::string vardas, pavarde;
+        ss >> vardas >> pavarde;
+        Laik.setVardas(vardas);
+        Laik.setPavarde(pavarde);
+
+        Laik.setPazymiai({});
+        int skaicius;
+        std::vector<int> laikini;
+        while (ss >> skaicius) {
+            laikini.push_back(skaicius);
         }
-        catch (const std::exception& e) {
-            std::cerr << "Klaida skaitant studento eilut?: " << e.what() << std::endl;
-            continue;
+
+        if (laikini.empty()) continue;
+
+        Laik.setEgzaminas(laikini.back());
+        laikini.pop_back();
+
+        int sum = 0;
+        for (int p : laikini) {
+            Laik.pridetiPazymi(p);
+            sum += p;
         }
+
+        if (!Laik.getPazymiai().empty()) {
+            Laik.setGalutinisVid(Laik.getEgzaminas() * 0.6 + double(sum) / Laik.getPazymiai().size() * 0.4);
+            Laik.setGalutinisMed(Laik.getEgzaminas() * 0.6 + median(Laik.getPazymiai()) * 0.4);
+        }
+        else {
+            Laik.setGalutinisVid(Laik.getEgzaminas() * 0.6);
+            Laik.setGalutinisMed(Laik.getEgzaminas() * 0.6);
+        }
+
+        Grupe.push_back(Laik);
     }
-    std::cout << std::fixed << std::setprecision(6) << "Failo nuskaitymas uztruko: " << laikmatis_nuskaitymo.elapsed() << " s" << std::endl;
+
+    cout << std::fixed << std::setprecision(6)
+        << "Failo nuskaitymas uztruko: " << laikmatis_nuskaitymo.elapsed() << " s" << endl;
     return Grupe;
 }
 
