@@ -154,6 +154,20 @@ Dažniausiai buvo greičiau naudoti 2 strategiją.
 - Vector konteineris sunaudoja daugiau atminties.   
 - 2 strategija labai neefektyvi su dideliais duomenų kiekiais (1000000 ir 10000000 įrašų), nes ji kiekvienam vargšiukui naudoja erase() funkciją vector konteineryje. Kiekvienas erase() kvietimas perstumia visus likusius elementus, todėl operacijos sudėtingumas tampa O(n²).
 
+**Strategija 1 – Du nauji konteineriai(su struct)**
+
+| Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
+|--------------|---------|----------------|--------------|--------------|--------------|
+| vector | studentai100000.txt | 0.957551 | 0.328320 | 1.701649 | 21620012 |
+| vector | studentai1000000.txt | 6.804002 | 1.954002 | 10.600715 | 216012312 | 
+
+**Strategija 1 – Du nauji konteineriai(su class)**
+
+| Konteineris | Failas | Nuskaitymas (s) | Įrašymas (s) | Bendras (s) | Atmintis (B) |
+|--------------|---------|----------------|--------------|--------------|--------------|
+| vector | studentai100000.txt | 0.408979 | 0.199345 | 0.608324 | 14378544 |
+| vector | studentai1000000.txt | 4.397648 | 2.120036 | 6.517684 | 109186400 |
+
 
 ## Rankinis įvedimas
 
