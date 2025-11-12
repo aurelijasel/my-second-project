@@ -180,11 +180,11 @@ studentai1000000.txt
 | vector | studentai1000000.txt | 4.397648 | 2.120036 | 6.517684 | 109 186 400 |
 
 **Išvada:**  
-`class` versijos veikimas yra spartesnis ir atminties atžvilgiu efektyvesnis.
+- class versijos veikimas yra spartesnis ir atminties atžvilgiu efektyvesnis.
 
 **2. Optimizavimo flag’ų analizė**
 
-Analizuotas `class` variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: `O1`, `O2`, `O3`.
+Analizuotas class variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: `O1`, `O2`, `O3`.
 
 **Optimizacija `O1`**
 
