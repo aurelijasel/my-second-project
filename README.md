@@ -232,7 +232,7 @@ Analizuotas struct ir class variantas (strategija 1, vector) su skirtingais komp
 | vector | studentai100000.txt | 0.422925 | 0.216015 | 0.638940 | 14 378 544 |
 | vector | studentai1000000.txt | 5.140793 | 2.245802 | 7.386596 | 109 186 400 |
 
-**3. Apibendrinimas**
+**Išvados:**
 
 - O1 yra stabiliausias ir greičiausias optimizacijos pasirinkimas dirbant su struct.
 - O2 yra stabiliausias ir greičiausias optimizacijos pasirinkimas dirbant su class.
