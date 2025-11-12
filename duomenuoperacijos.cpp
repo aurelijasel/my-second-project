@@ -18,55 +18,42 @@ std::vector<Studentas> nuskaityti(std::string failas) {
     Laikmatis laikmatis_nuskaitymo;
     std::vector<Studentas> Grupe;
     std::ifstream fd(failas);
+
     if (!fd) {
-        cout << "Nepavyko atidaryti failo: " << failas << endl;
+        std::cout << "Nepavyko atidaryti failo: " << failas << std::endl;
         return Grupe;
     }
 
     std::string antraste;
-    getline(fd, antraste);
+    std::getline(fd, antraste); // praleidžiam pirm? eilut? su antrašte
 
     std::string eilute;
-    while (getline(fd, eilute)) {
+    while (std::getline(fd, eilute)) {
         std::istringstream ss(eilute);
-        Studentas Laik;
         std::string vardas, pavarde;
         ss >> vardas >> pavarde;
-        Laik.setVardas(vardas);
-        Laik.setPavarde(pavarde);
 
-        Laik.setPazymiai({});
-        int skaicius;
         std::vector<int> laikini;
+        int skaicius;
         while (ss >> skaicius) {
             laikini.push_back(skaicius);
         }
 
         if (laikini.empty()) continue;
 
-        Laik.setEgzaminas(laikini.back());
+        int egz = laikini.back();
         laikini.pop_back();
 
-        int sum = 0;
-        for (int p : laikini) {
-            Laik.pridetiPazymi(p);
-            sum += p;
-        }
+        // Sukuriame student? su konstruktoriumi vietoje setter'i?
+        Studentas Laik(vardas, pavarde, laikini, egz);
 
-        if (!Laik.getPazymiai().empty()) {
-            Laik.setGalutinisVid(Laik.getEgzaminas() * 0.6 + double(sum) / Laik.getPazymiai().size() * 0.4);
-            Laik.setGalutinisMed(Laik.getEgzaminas() * 0.6 + median(Laik.getPazymiai()) * 0.4);
-        }
-        else {
-            Laik.setGalutinisVid(Laik.getEgzaminas() * 0.6);
-            Laik.setGalutinisMed(Laik.getEgzaminas() * 0.6);
-        }
-
+        // Galutinis skai?iavimas ?vyksta konstruktoriaus viduje (skaiciuokVidurkiMediana())
         Grupe.push_back(Laik);
     }
 
-    cout << std::fixed << std::setprecision(6)
-        << "Failo nuskaitymas uztruko: " << laikmatis_nuskaitymo.elapsed() << " s" << endl;
+    std::cout << std::fixed << std::setprecision(6)
+        << "Failo nuskaitymas uztruko: " << laikmatis_nuskaitymo.elapsed() << " s" << std::endl;
+
     return Grupe;
 }
 
@@ -184,8 +171,6 @@ void suskirstyti(std::vector<Studentas>& grupe, char pagalkaskirstyti, char paga
 
 // --------------------- Pagal strategijas suskirstyti - List ---------------------
 void suskirstyti(std::list<Studentas>& grupe, char pagalkaskirstyti, char pagalkarikiuoti, int strategija);
-
-// --------------------- Pagalba rusiavimui ---------------------
 
 // --------------------- Vector suskirstyti strategija 1 ---------------------
 void suskirstyti(std::vector<Studentas>& grupe, char pagalkaskirstyti, char pagalkarikiuoti) {
@@ -312,10 +297,14 @@ void suskirstyti_optimizuota(std::vector<Studentas>& grupe, char pagalkaskirstyt
     suskirstyti_stl_antros_logika(kopija2, pagalkaskirstyti, pagalkarikiuoti); // STL: partition
     double laikas2 = t2.elapsed();
 
-    if (laikas1 <= laikas2)
+    if (laikas1 <= laikas2) {
+        cout << "Vector (strategija 3): greitesne buvo strategija 1, ji ir panaudota.\n";
         suskirstyti_optimizuota_pirma(grupe, pagalkaskirstyti, pagalkarikiuoti);
-    else
+    }
+    else {
+        cout << "Vector (strategija 3): greitesne buvo strategija 2, ji ir panaudota.\n";
         suskirstyti_stl_antros_logika(grupe, pagalkaskirstyti, pagalkarikiuoti);
+    }
 }
 
 // --- List versija (lygina be STL) ---
@@ -331,10 +320,14 @@ void suskirstyti_optimizuota(std::list<Studentas>& grupe, char pagalkaskirstyti,
     suskirstyti(kopija2, pagalkaskirstyti, pagalkarikiuoti, 2); // erase versija
     double laikas2 = t2.elapsed();
 
-    if (laikas1 <= laikas2)
+    if (laikas1 <= laikas2) {
+        cout << "List (strategija 3): greitesne buvo strategija 1, ji ir panaudota.\n";
         suskirstyti(grupe, pagalkaskirstyti, pagalkarikiuoti, 1);
-    else
+    }
+    else {
+        cout << "List (strategija 3): greitesne buvo strategija 2, ji ir panaudota.\n";
         suskirstyti(grupe, pagalkaskirstyti, pagalkarikiuoti, 2);
+    }
 }
 
 // --------------------- Strategija 3 - pirma logika (vector) ---------------------
