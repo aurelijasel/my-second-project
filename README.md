@@ -237,6 +237,17 @@ Analizuotas struct ir class variantas (strategija 1, vector) su skirtingais komp
 - O1 yra stabiliausias ir greičiausias optimizacijos pasirinkimas dirbant su struct.
 - O2 yra stabiliausias ir greičiausias optimizacijos pasirinkimas dirbant su class.
 
+**3. EXE failų dydžių palyginimas po optimizavimo**
+
+| Tipas | O1 dydis | O2 dydis | O3 dydis |
+|--------|-----------|-----------|-----------|
+| struct | 86 KB | 97 KB | 104 KB |
+| class | 78 KB | 93 KB | 95 KB |
+
+**Išvada:**
+
+- class versijos exe failai yra mažesni už struct visuose optimizavimo lygiuose.  
+- class struktūra leidžia kompiliatoriui efektyviau optimizuoti kodą.
 
 ## Rankinis įvedimas
 
