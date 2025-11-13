@@ -184,7 +184,7 @@ studentai1000000.txt
 
 **2. Optimizavimo flag’ų analizė**
 
-Analizuotas struct ir class variantas (strategija 1, vector) su skirtingais kompiliatoriaus optimizavimo lygiais: O1, O2, O3.
+Analizuotas struct ir class variantas (strategija 1, vector, du failai: studentai100000.txt, studentai1000000.txt) su skirtingais kompiliatoriaus optimizavimo lygiais: O1, O2, O3.
 
 **Struct analizė:**
 
