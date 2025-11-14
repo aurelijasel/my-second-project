@@ -33,6 +33,12 @@ public:
 
     // --- DESTRUKTORIUS ---
     ~Studentas() {
+        vardas_.clear();
+        pavarde_.clear();
+        nd_.clear();
+        egzaminas_ = 0;
+        vidurkis_ = 0;
+        mediana_ = 0;
     }
 
     // --- GETTERIAI ---
@@ -57,5 +63,3 @@ public:
 };
 
 #endif
-
-
