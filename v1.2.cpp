@@ -2,6 +2,7 @@
 #include "pagalbinesfunkcijos.h"
 #include "duomenuoperacijos.h"
 #include "laikas.h"
+#include "ruleofthree.h"
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -23,15 +24,21 @@ int main() {
     std::string veiksmas;
     cout << "Pasirinkite rezima:\n"
         << "1 - Iprastas programos veikimas\n"
-        << "2 - Automatinis testavimas (vector vs list)\n";
+        << "2 - Automatinis testavimas (vector vs list)\n"
+        << "3 - Rule of three demonstracija\n";
     cin >> veiksmas;
+
+    if (veiksmas == "3") {
+        demonstruotiruleofthree();
+        return 0;
+    }
 
     if (veiksmas == "2") {
         std::vector<std::string> test_failai = {
-            "studentai1000.txt",
-            "studentai10000.txt",
-            //"studentai100000.txt",
-            //"studentai1000000.txt",
+            //"studentai1000.txt",
+            //"studentai10000.txt",
+            "studentai100000.txt",
+            "studentai1000000.txt",
             //"studentai10000000.txt"
         };
 
