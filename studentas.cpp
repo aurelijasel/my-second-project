@@ -2,31 +2,45 @@
 #include <numeric>
 #include <stdexcept>
 #include <iomanip>
+#include <sstream>
 
-// === OPERATOR >> ===
+// --- OPERATORIUS >> ---
 std::istream& operator>>(std::istream& is, Studentas& s) {
     return s.readStudent(is);
 }
 
-// === OPERATOR << ===
+// --- OPERATORIUS << ---
 std::ostream& operator<<(std::ostream& os, const Studentas& s) {
-    os << std::left << std::setw(15) << s.vardas_
-        << std::setw(15) << s.pavarde_
-        << "Vidurkis: " << std::fixed << std::setprecision(2) << s.vidurkis_
-        << "  Mediana: " << std::fixed << std::setprecision(2) << s.mediana_;
+    os << s.vardas_ << " " << s.pavarde_
+        << " Vid.: " << std::fixed << std::setprecision(2) << s.vidurkis_
+        << " Med.: " << std::fixed << std::setprecision(2) << s.mediana_;
     return os;
 }
 
 std::istream& Studentas::readStudent(std::istream& is) {
-    is >> vardas_ >> pavarde_;
+    std::string line;
+    if (!std::getline(is, line)) {
+        return is;
+    }
+
+    if (line.empty()) {
+        return is;
+    }
+
+    std::istringstream ss(line);
+    ss >> vardas_ >> pavarde_;
     nd_.clear();
 
     int paz;
     std::vector<int> laikini;
+    while (ss >> paz) {
+        laikini.push_back(paz);
+    }
 
-    while (is >> paz) laikini.push_back(paz);
-
-    if (laikini.empty()) throw std::runtime_error("Nera pazymiu.");
+    if (laikini.empty()) {
+        is.setstate(std::ios::failbit);
+        return is;
+    }
 
     egzaminas_ = laikini.back();
     laikini.pop_back();
@@ -38,22 +52,21 @@ std::istream& Studentas::readStudent(std::istream& is) {
 
 void Studentas::skaiciuokVidurkiMediana() {
     if (nd_.empty()) {
-        vidurkis_ = egzaminas_ * 0.6;
-        mediana_ = egzaminas_ * 0.6;
+        vidurkis_ = egzaminas_ * 0.6f;
+        mediana_ = egzaminas_ * 0.6f;
         return;
     }
 
     double suma = std::accumulate(nd_.begin(), nd_.end(), 0.0);
     double ndvid = suma / nd_.size();
 
-    vidurkis_ = egzaminas_ * 0.6 + ndvid * 0.4;
-    mediana_ = egzaminas_ * 0.6 + median(nd_) * 0.4;
+    vidurkis_ = static_cast<float>(egzaminas_ * 0.6 + ndvid * 0.4);
+    mediana_ = static_cast<float>(egzaminas_ * 0.6 + median(nd_) * 0.4);
 }
 
 double Studentas::median(std::vector<int> v) {
     std::sort(v.begin(), v.end());
     size_t n = v.size();
-
     if (n == 0) return 0;
     if (n % 2 == 0)
         return (v[n / 2 - 1] + v[n / 2]) / 2.0;
