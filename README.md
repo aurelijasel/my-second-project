@@ -7,7 +7,6 @@
 - palyginti vector ir list konteinerių veikimo spartą ir atminties panaudojimą,
 - matuoti skirtingų operacijų (nuskaitymo, įrašymo) laikus.
 
-
 ## Naudojimosi instrukcija
 
 ### Programos atsisiuntimas
@@ -37,6 +36,7 @@ cd Debug
 ```
 1 - Iprastas programos veikimas
 2 - Automatinis testavimas (vector vs list)
+3 - Rule of three demonstracija
 ```
 
 ### Įprastas režimas
@@ -72,6 +72,62 @@ Galima pasirinkti:
 
 Rezultatai įrašomi į testavimorezultatai.txt.
 
+### Rule of Three demonstracija
+Šiuo režimu programa naudoja Studentas klasę, kuriai įgyvendinta trijų metodų taisyklė (Rule of Three) ir vykdo veikimo demonstraciją:
+
+1. **Kopijavimo konstruktorius**  
+   Leidžia kurti naują objektą pagal jau egzistuojantį. 
+   ```
+   Studentas s1("Vardas1", "Pavarde1", {7, 8, 9}, 7);
+   Studentas s2 = s1; // Kopijavimo konstruktorius
+   cout << s2;
+   ```
+   **Išvestis:**
+   ```
+   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
+   ```
+  
+3. **Kopijavimo priskyrimo operatorius**  
+   Leidžia priskirti vieno objekto duomenis kitam po jo sukūrimo:
+   ```
+   Studentas s3("Vardas2", "Pavarde2", {5, 6, 7}, 5);
+   s3 = s1; // Priskyrimo operatorius
+   cout << s3;
+   ```
+   **Išvestis:**
+   ```
+   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
+   ```
+
+3. **Savęs priskyrimas**  
+   Testuojamas atvejis, kai objektas priskiriamas pats sau:
+   ```
+   s1 = s1;
+   cout << s1;
+   ```
+   **Išvestis:**
+   ```
+   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
+   ```
+
+**Įvesties ir išvesties operatoriai**
+
+1. **Įvesties operatorius (>>)**  
+   Leidžia nuskaityti studento duomenis tiek rankiniu būdu, tiek iš failo:
+   ```
+   Studentas s;
+   cin >> s; // Įvedimas iš konsolės arba failo
+   ```
+
+2. **Išvesties operatorius (<<)**  
+   Leidžia tvarkingai spausdinti studento duomenis į ekraną ar failą:
+   ```
+   cout << s;
+   ```
+   **Pavyzdys konsolėje:**
+   ```
+   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
+   ```
 
 ## Strategijų aprašymas
 
@@ -98,7 +154,6 @@ studentai100000.txt
 studentai1000000.txt
 studentai10000000.txt
 ```
-
 
 **Strategija 1 – Du nauji konteineriai**
 
@@ -275,7 +330,6 @@ Iveskite egzamina: 7
 Studento objektas saugomas adresu: 0000022402A862D0
 ```
 
-
 ## Release istorija
 
 | Versija | Aprašymas |
@@ -286,3 +340,4 @@ Studento objektas saugomas adresu: 0000022402A862D0
 | v0.3 | Pridėtas konteinerių (vector ir list) veikimo trukmės palyginimas. |
 | v1.0 | Pridėtas 3 strategijų (rūšiavimo metodų) palyginimas tiek vector, tiek list. |
 | v1.1 | Pakeista struct į class duomenų struktūrų apibrėžimuose, išlaikant tą patį programos veikimą. |
+| v1.2 | Pridėta Rule of Three demonstracija, perdengti >> / << operatoriai darbui su ekrano ir failo įvestimi/išvestimi. |
