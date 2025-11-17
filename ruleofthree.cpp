@@ -2,7 +2,7 @@
 #include "studentas.h"
 #include <iostream>
 #include <vector>
-#include <limits> // std::numeric_limits
+#include <limits>
 
 using std::cout;
 using std::endl;
@@ -36,3 +36,4 @@ void demonstruotiruleofthree() {
     s1 = s1;
     cout << "Po saves priskyrimo (s1 = s1): " << s1 << endl;
 }
+
