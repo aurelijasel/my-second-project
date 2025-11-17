@@ -73,50 +73,42 @@ Galima pasirinkti:
 Rezultatai įrašomi į testavimorezultatai.txt.
 
 ### Rule of Three demonstracija
-Šiuo režimu programa naudoja Studentas klasę, kuriai įgyvendinta trijų metodų taisyklė (Rule of Three) ir vykdo veikimo demonstraciją:
+Šiuo režimu programa leidžia vartotojui įvesti studentus (s1 ir s2), o programa demonstruoja:
+- Konstruktorių
+- Kopijavimo konstruktorių
+- Priskyrimo operatorių
+- Savo paties priskyrimą
 
-1. **Kopijavimo konstruktorius**  
-   Leidžia kurti naują objektą pagal jau egzistuojantį. 
-   ```
-   Studentas s1("Vardas1", "Pavarde1", {7, 8, 9}, 7);
-   Studentas s2 = s1; // Kopijavimo konstruktorius
-   cout << s2;
-   ```
-   **Išvestis:**
-   ```
-   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
-   ```
-  
-3. **Kopijavimo priskyrimo operatorius**  
-   Leidžia priskirti vieno objekto duomenis kitam po jo sukūrimo:
-   ```
-   Studentas s3("Vardas2", "Pavarde2", {5, 6, 7}, 5);
-   s3 = s1; // Priskyrimo operatorius
-   cout << s3;
-   ```
-   **Išvestis:**
-   ```
-   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
-   ```
-
-3. **Savęs priskyrimas**  
-   Testuojamas atvejis, kai objektas priskiriamas pats sau:
-   ```
-   s1 = s1;
-   cout << s1;
-   ```
-   **Išvestis:**
-   ```
-   Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
-   ```
+**Pavyzdys konsolėje:**
+```
+RULE OF THREE DEMONSTRACIJA
+Iveskite studento duomenis (vardas, pavarde, pazymiai ir egzaminas):
+Jonas Jonaitis 4 3 8 8 10
+Originalus studentas (s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
+Po kopijavimo konstruktoriaus (s2 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
+Iveskite kita studenta (s3), kuris bus perrasytas s1 duomenimis:
+Petras Petraitis 7 7 6 4 4 9 9
+Pries priskyrima(s3): Petras Petraitis Vid.: 7.87 Med.: 8.00
+Po priskyrimo operatoriaus (s3 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
+Po saves priskyrimo (s1 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
+```
 
 **Įvesties ir išvesties operatoriai**
 
 1. **Įvesties operatorius (>>)**  
-   Leidžia nuskaityti studento duomenis tiek rankiniu būdu, tiek iš failo:
+   Leidžia įvesti:
+   - vardą
+   - pavardę
+   - namų darbų pažymius
+   - egzamino pažymį
    ```
    Studentas s;
    cin >> s; // Įvedimas iš konsolės arba failo
+   ```
+
+   **Formatas:**
+   ```
+   Vardas Pavarde nd1 nd2 nd3 ... egzaminas
    ```
 
 2. **Išvesties operatorius (<<)**  
