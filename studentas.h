@@ -24,22 +24,40 @@ public:
     }
 
     Studentas(const std::string& vard, const std::string& pav,
-        const std::vector<int>& nd, int egzaminas)
-        : vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egzaminas) {
+        const std::vector<int>& nd, int egz)
+        : vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egz) {
         skaiciuokVidurkiMediana();
     }
 
     Studentas(std::istream& is) { readStudent(is); }
 
-    // --- DESTRUKTORIUS ---
-    ~Studentas() {
-        vardas_.clear();
-        pavarde_.clear();
-        nd_.clear();
-        egzaminas_ = 0;
-        vidurkis_ = 0;
-        mediana_ = 0;
+    // === RULE OF THREE ===
+
+    // --- Copy constructor ---
+    Studentas(const Studentas& other)
+        : vardas_(other.vardas_),
+        pavarde_(other.pavarde_),
+        nd_(other.nd_),
+        egzaminas_(other.egzaminas_),
+        vidurkis_(other.vidurkis_),
+        mediana_(other.mediana_) {
     }
+
+    // --- Copy assignment operator ---
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other) {
+            vardas_ = other.vardas_;
+            pavarde_ = other.pavarde_;
+            nd_ = other.nd_;
+            egzaminas_ = other.egzaminas_;
+            vidurkis_ = other.vidurkis_;
+            mediana_ = other.mediana_;
+        }
+        return *this;
+    }
+
+    // --- Destructor ---
+    ~Studentas() = default;
 
     // --- GETTERIAI ---
     inline const std::string& getVardas() const { return vardas_; }
@@ -50,16 +68,21 @@ public:
     inline double getGalutinisMed() const { return mediana_; }
 
     inline void pridetiPazymi(int paz) { nd_.push_back(paz); }
+
     void skaiciuokVidurkiMediana();
     std::istream& readStudent(std::istream&);
 
     static double median(std::vector<int> v);
 
-    // --- PALYGINIMUI ---
+    // --- PALYGINIMAI ---
     friend bool comparePagalVarda(const Studentas& a, const Studentas& b);
     friend bool comparePagalPavarde(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniVid(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b);
+
+    // === I/O OPERATORIAI ===
+    friend std::istream& operator>>(std::istream& is, Studentas& s);
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
 };
 
 #endif
