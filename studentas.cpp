@@ -3,15 +3,28 @@
 #include <stdexcept>
 #include <iomanip>
 
+// === OPERATOR >> ===
+std::istream& operator>>(std::istream& is, Studentas& s) {
+    return s.readStudent(is);
+}
+
+// === OPERATOR << ===
+std::ostream& operator<<(std::ostream& os, const Studentas& s) {
+    os << std::left << std::setw(15) << s.vardas_
+        << std::setw(15) << s.pavarde_
+        << "Vidurkis: " << std::fixed << std::setprecision(2) << s.vidurkis_
+        << "  Mediana: " << std::fixed << std::setprecision(2) << s.mediana_;
+    return os;
+}
+
 std::istream& Studentas::readStudent(std::istream& is) {
     is >> vardas_ >> pavarde_;
     nd_.clear();
 
     int paz;
     std::vector<int> laikini;
-    while (is >> paz) {
-        laikini.push_back(paz);
-    }
+
+    while (is >> paz) laikini.push_back(paz);
 
     if (laikini.empty()) throw std::runtime_error("Nera pazymiu.");
 
@@ -40,6 +53,7 @@ void Studentas::skaiciuokVidurkiMediana() {
 double Studentas::median(std::vector<int> v) {
     std::sort(v.begin(), v.end());
     size_t n = v.size();
+
     if (n == 0) return 0;
     if (n % 2 == 0)
         return (v[n / 2 - 1] + v[n / 2]) / 2.0;
@@ -47,6 +61,7 @@ double Studentas::median(std::vector<int> v) {
         return v[n / 2];
 }
 
+// --- Palyginimai ---
 bool comparePagalVarda(const Studentas& a, const Studentas& b) {
     return a.vardas_ < b.vardas_;
 }
