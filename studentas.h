@@ -31,9 +31,8 @@ public:
 
     Studentas(std::istream& is) { readStudent(is); }
 
-    // === RULE OF THREE ===
-
-    // --- Copy constructor ---
+    // --- RULE OF THREE ---
+    // --- Copy konstruktorius ---
     Studentas(const Studentas& other)
         : vardas_(other.vardas_),
         pavarde_(other.pavarde_),
@@ -43,7 +42,7 @@ public:
         mediana_(other.mediana_) {
     }
 
-    // --- Copy assignment operator ---
+    // --- Copy assignment operatorius ---
     Studentas& operator=(const Studentas& other) {
         if (this != &other) {
             vardas_ = other.vardas_;
@@ -68,7 +67,6 @@ public:
     inline double getGalutinisMed() const { return mediana_; }
 
     inline void pridetiPazymi(int paz) { nd_.push_back(paz); }
-
     void skaiciuokVidurkiMediana();
     std::istream& readStudent(std::istream&);
 
@@ -80,9 +78,9 @@ public:
     friend bool comparePagalGalutiniVid(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b);
 
-    // === I/O OPERATORIAI ===
-    friend std::istream& operator>>(std::istream& is, Studentas& s);
-    friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
+    // --- I/O OPERATORIAI ---
+    friend std::istream& operator>>(std::istream& is, Studentas& s); // *** PRIDĖTA ***
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& s); // *** PRIDĖTA ***
 };
 
 #endif
