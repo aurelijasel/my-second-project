@@ -2,15 +2,21 @@
 #include "studentas.h"
 #include <iostream>
 #include <vector>
+#include <limits> // std::numeric_limits
 
 using std::cout;
 using std::endl;
+using std::cin;
 
 void demonstruotiruleofthree() {
     cout << "\nRULE OF THREE DEMONSTRACIJA\n";
 
-    // 1. Konstruktorius
-    Studentas s1("Vardas1", "Pavarde1", { 7, 8, 9 }, 7);
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    // 1. Vartotojo įvestas studentas
+    Studentas s1;
+    cout << "Iveskite studento duomenis (vardas, pavarde, pazymiai ir egzaminas):\n";
+    cin >> s1;
     cout << "Originalus studentas (s1): " << s1 << endl;
 
     // 2. Kopijavimo konstruktorius
@@ -18,13 +24,15 @@ void demonstruotiruleofthree() {
     cout << "Po kopijavimo konstruktoriaus (s2 = s1): " << s2 << endl;
 
     // 3. Priskyrimo operatorius
-    Studentas s3("Vardas2", "Pavarde2", { 5, 6, 7 }, 5);
-    cout << "Pries priskyrima (s3): " << s3 << endl;
+    Studentas s3;
+    cout << "Iveskite kita studenta (s3), kuris bus perrasytas s1 duomenimis:\n";
+    cin >> s3;
+    cout << "Pries priskyrima(s3): " << s3 << endl;
 
     s3 = s1;
     cout << "Po priskyrimo operatoriaus (s3 = s1): " << s3 << endl;
 
-    // 4. Sav?s priskyrimas (edge case)
+    // 4. Savęs priskyrimas
     s1 = s1;
     cout << "Po saves priskyrimo (s1 = s1): " << s1 << endl;
 }
