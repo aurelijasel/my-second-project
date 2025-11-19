@@ -3,7 +3,7 @@
 
 #include <string>
 
-// ABSTRAKTI BAZINĖ KLASĖ
+// ABSTRAKTI BAZINE KLASE
 
 class Zmogus {
 protected:
