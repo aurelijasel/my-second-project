@@ -89,8 +89,9 @@ public:
     friend bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b);
 
     // --- I/O OPERATORIAI ---
-    friend std::istream& operator>>(std::istream& is, Studentas& s); // *** PRID?TA ***
-    friend std::ostream& operator<<(std::ostream& os, const Studentas& s); // *** PRID?TA ***
+    friend std::istream& operator>>(std::istream& is, Studentas& s);
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
 };
 
 #endif
+
