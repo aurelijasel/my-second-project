@@ -57,6 +57,9 @@ public:
 
     // --- Destructor ---
     ~Studentas() {
+        std::cout << "Destruktorius kvieciamas studentui: "
+            << vardas_ << " " << pavarde_ << std::endl;
+
         vardas_.clear();
         pavarde_.clear();
         nd_.clear();
@@ -86,9 +89,8 @@ public:
     friend bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b);
 
     // --- I/O OPERATORIAI ---
-    friend std::istream& operator>>(std::istream& is, Studentas& s); // *** PRIDĖTA ***
-    friend std::ostream& operator<<(std::ostream& os, const Studentas& s); // *** PRIDĖTA ***
+    friend std::istream& operator>>(std::istream& is, Studentas& s); // *** PRID?TA ***
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& s); // *** PRID?TA ***
 };
 
 #endif
-
