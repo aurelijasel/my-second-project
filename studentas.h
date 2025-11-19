@@ -1,48 +1,48 @@
 #ifndef STUDENTAS_H
 #define STUDENTAS_H
 
+#include "zmogus.h"
 #include <string>
 #include <vector>
 #include <iostream>
 #include <algorithm>
 
-class Studentas {
+class Studentas : public Zmogus {
 private:
-    std::string vardas_;
-    std::string pavarde_;
     std::vector<int> nd_;
     int egzaminas_;
     float vidurkis_;
     float mediana_;
 
 public:
+
     // --- KONSTRUKTORIAI ---
-    Studentas() : egzaminas_(0), vidurkis_(0), mediana_(0) {}
+    Studentas()
+        : Zmogus("", ""), egzaminas_(0), vidurkis_(0), mediana_(0) {
+    }
 
     Studentas(const std::string& vard, const std::string& pav)
-        : vardas_(vard), pavarde_(pav), egzaminas_(0), vidurkis_(0), mediana_(0) {
+        : Zmogus(vard, pav), egzaminas_(0), vidurkis_(0), mediana_(0) {
     }
 
     Studentas(const std::string& vard, const std::string& pav,
         const std::vector<int>& nd, int egz)
-        : vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egz) {
+        : Zmogus(vard, pav), nd_(nd), egzaminas_(egz) {
         skaiciuokVidurkiMediana();
     }
 
     Studentas(std::istream& is) { readStudent(is); }
 
-    // --- RULE OF THREE ---
-    // --- Copy konstruktorius ---
+    // --- COPY KONSTRUKTORIUS ---
     Studentas(const Studentas& other)
-        : vardas_(other.vardas_),
-        pavarde_(other.pavarde_),
+        : Zmogus(other.vardas_, other.pavarde_),
         nd_(other.nd_),
         egzaminas_(other.egzaminas_),
         vidurkis_(other.vidurkis_),
         mediana_(other.mediana_) {
     }
 
-    // --- Copy assignment operatorius ---
+    // --- COPY ASSIGNMENT ---
     Studentas& operator=(const Studentas& other) {
         if (this != &other) {
             vardas_ = other.vardas_;
@@ -55,10 +55,10 @@ public:
         return *this;
     }
 
-    // --- Destructor ---
-    ~Studentas() {
-        std::cout << "Destruktorius kvieciamas studentui: "
-            << vardas_ << " " << pavarde_ << std::endl;
+    // --- TAVO DESTRUKTORIUS ---
+    ~Studentas() override {
+        //std::cout << "Destruktorius kvieciamas studentui: "
+            //<< vardas_ << " " << pavarde_ << std::endl;
 
         vardas_.clear();
         pavarde_.clear();
@@ -69,29 +69,28 @@ public:
     }
 
     // --- GETTERIAI ---
-    inline const std::string& getVardas() const { return vardas_; }
-    inline const std::string& getPavarde() const { return pavarde_; }
+    const std::string& getVardas() const override { return vardas_; }
+    const std::string& getPavarde() const override { return pavarde_; }
+
     inline const std::vector<int>& getPazymiai() const { return nd_; }
     inline int getEgzaminas() const { return egzaminas_; }
     inline double getGalutinisVid() const { return vidurkis_; }
     inline double getGalutinisMed() const { return mediana_; }
 
     inline void pridetiPazymi(int paz) { nd_.push_back(paz); }
+
     void skaiciuokVidurkiMediana();
     std::istream& readStudent(std::istream&);
-
     static double median(std::vector<int> v);
 
-    // --- PALYGINIMAI ---
+    // --- FRIEND FUNKCIJOS ---
     friend bool comparePagalVarda(const Studentas& a, const Studentas& b);
     friend bool comparePagalPavarde(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniVid(const Studentas& a, const Studentas& b);
     friend bool comparePagalGalutiniMed(const Studentas& a, const Studentas& b);
 
-    // --- I/O OPERATORIAI ---
     friend std::istream& operator>>(std::istream& is, Studentas& s);
     friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
 };
 
 #endif
-
