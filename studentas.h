@@ -56,7 +56,14 @@ public:
     }
 
     // --- Destructor ---
-    ~Studentas() = default;
+    ~Studentas() {
+        vardas_.clear();
+        pavarde_.clear();
+        nd_.clear();
+        egzaminas_ = 0;
+        vidurkis_ = 0;
+        mediana_ = 0;
+    }
 
     // --- GETTERIAI ---
     inline const std::string& getVardas() const { return vardas_; }
@@ -84,3 +91,4 @@ public:
 };
 
 #endif
+
