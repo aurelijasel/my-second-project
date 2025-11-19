@@ -73,24 +73,37 @@ Galima pasirinkti:
 Rezultatai įrašomi į testavimorezultatai.txt.
 
 ### Rule of Three demonstracija
+„Rule of Three“ principas teigia: jeigu klasė naudoja duomenis, kuriuos reikia valdyti rankiniu būdu, ji privalo turėti:
+- Kopijavimo konstruktorių
+- Priskyrimo operatorių
+- Destruktorių
+
 Šiuo režimu programa leidžia vartotojui įvesti studentus (s1 ir s2), o programa demonstruoja:
 - Konstruktorių
 - Kopijavimo konstruktorių
 - Priskyrimo operatorių
 - Savo paties priskyrimą
+- Destruktorius
+
+Demonstracija atliekama specialiame bloke { ... }, į kurį įdedami visi vartotojo sukurti objektai (s1, s2, s3). Pasibaigus blokui — iškviečiamas destruktorius ir visi objektai sunaikinami.
 
 **Pavyzdys konsolėje:**
 ```
 RULE OF THREE DEMONSTRACIJA
 Iveskite studento duomenis (vardas, pavarde, pazymiai ir egzaminas):
-Jonas Jonaitis 4 3 8 8 10
-Originalus studentas (s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
-Po kopijavimo konstruktoriaus (s2 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
+Jonas Jonaitis 3 6 5 4 4 3 6
+Originalus studentas (s1): Jonas Jonaitis Vid.: 5.27 Med.: 5.20
+Po kopijavimo konstruktoriaus (s2 = s1): Jonas Jonaitis Vid.: 5.27 Med.: 5.20
 Iveskite kita studenta (s3), kuris bus perrasytas s1 duomenimis:
-Petras Petraitis 7 7 6 4 4 9 9
-Pries priskyrima(s3): Petras Petraitis Vid.: 7.87 Med.: 8.00
-Po priskyrimo operatoriaus (s3 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
-Po saves priskyrimo (s1 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
+Petras Petraitis  8 7 7 10
+Pries priskyrima (s3): Petras Petraitis Vid.: 8.93 Med.: 8.80
+Po priskyrimo operatoriaus (s3 = s1): Jonas Jonaitis Vid.: 5.27 Med.: 5.20
+Po saves priskyrimo (s1 = s1): Jonas Jonaitis Vid.: 5.27 Med.: 5.20
+Baigiame bloka. Dabar bus kvieciami destruktoriai s1, s2 ir s3.
+Destruktorius kvieciamas studentui: Jonas Jonaitis
+Destruktorius kvieciamas studentui: Jonas Jonaitis
+Destruktorius kvieciamas studentui: Jonas Jonaitis
+Blokas baigtas. Visi vartotojo ivesti studentai sunaikinti.
 ```
 
 **Įvesties ir išvesties operatoriai**
@@ -101,6 +114,7 @@ Po saves priskyrimo (s1 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
    - pavardę
    - namų darbų pažymius
    - egzamino pažymį
+   
    ```
    Studentas s;
    cin >> s; // Įvedimas iš konsolės arba failo
@@ -120,6 +134,8 @@ Po saves priskyrimo (s1 = s1): Jonas Jonaitis Vid.: 8.30 Med.: 8.40
    ```
    Vardas1 Pavarde1 Vid.: 7.40 Med.: 7.20
    ```
+
+Perdengti operatoriai >> ir << leidžia studentų duomenis skaityti ir išvesti vienodu formatu tiek į ekraną, tiek į failus.
 
 ## Strategijų aprašymas
 
