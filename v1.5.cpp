@@ -21,27 +21,18 @@ using std::left;
 
 int main() {
     srand(time(0));
+
+    //Zmogus z; // <-- Pakomentuota, nes kompiliavimo metu duos klaida
+
     std::string veiksmas;
     std::cout << "Pasirinkite rezima:\n"
         << "1 - Iprastas programos veikimas\n"
         << "2 - Automatinis testavimas (vector vs list)\n"
-        << "3 - Rule of three demonstracija\n"
-        << "4 - Abstrakcios klases Zmogus demonstracija\n";
+        << "3 - Rule of three demonstracija\n";
     std::cin >> veiksmas;
 
     if (veiksmas == "3") {
         demonstruotiruleofthree();
-        return 0;
-    }
-    else if (veiksmas == "4") {
-        std::cout << "\nBandoma sukurti Zmogus objekta...\n";
-
-        // Si eilute turetu sugeneruoti klaida kompiliuojant, nes Zmogus yra abstrakti
-        // Zmogus z; // <-- Pakomentuota, nes kompiliavimo metu duos klaida
-
-        std::cout << "Negalima sukurti abstrakcios klases Zmogus objektu." << std::endl;
-        std::cout << "Bandymas atkomentuoti 'Zmogus z;' duos kompiliavimo klaida." << std::endl;
-
         return 0;
     }
 
