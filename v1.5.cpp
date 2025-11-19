@@ -36,8 +36,8 @@ int main() {
     else if (veiksmas == "4") {
         std::cout << "\nBandoma sukurti Zmogus objekta...\n";
 
-        // Ši eilutė turėtų sugeneruoti klaidą kompiliuojant, nes Zmogus yra abstrakti
-        // Zmogus z; // <-- PAKOMENTUOTA, nes kompiliavimo metu duos klaidą
+        // Si eilute turetu sugeneruoti klaida kompiliuojant, nes Zmogus yra abstrakti
+        // Zmogus z; // <-- Pakomentuota, nes kompiliavimo metu duos klaida
 
         std::cout << "Negalima sukurti abstrakcios klases Zmogus objektu." << std::endl;
         std::cout << "Bandymas atkomentuoti 'Zmogus z;' duos kompiliavimo klaida." << std::endl;
