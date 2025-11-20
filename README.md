@@ -315,7 +315,7 @@ Analizuotas struct ir class variantas (strategija 1, vector, du failai: studenta
 ## Abstrakti klasė Žmogus
 Šiame projekte įvesta bazinė abstrakti klasė Žmogus, kuri apibūdina bendrus žmogaus atributus (vardas, pavardė) ir funkcijas.
 
-Dėl abstrakčios funkcijos spausdinti() neįmanoma sukurti Žmogus objekto, tik išvestinę klasę. Demonstracija kompiliavimo metu:
+Dėl abstrakčių funkcijų neįmanoma sukurti Žmogus objekto, tik išvestinę klasę. Demonstracija kompiliavimo metu:
 
 <img width="1920" height="1080" alt="download" src="https://github.com/user-attachments/assets/d15301ca-9ef8-4754-bb19-e7b76636b205" />
 
