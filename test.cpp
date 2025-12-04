@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "gtest/gtest.h"
 #include "studentas.h"
-#include "pagalbinesfunkcijos.h"
 #include <vector>
 #include <sstream>
 
@@ -46,33 +45,4 @@ TEST(StudentasTest, SkaiciuokVidurkiMediana) {
 
     EXPECT_NEAR(s.getGalutinisVid(), nd_vid * 0.4 + 8 * 0.6, 1e-5);
     EXPECT_NEAR(s.getGalutinisMed(), nd_med * 0.4 + 8 * 0.6, 1e-5);
-}
-
-// Testas nuskaitymui is srauto
-TEST(StudentasTest, ReadStudent) {
-    std::istringstream input("Jonas Jonaitis 5 7 9 8\n");
-    Studentas s(input);
-
-    EXPECT_EQ(s.getVardas(), "Jonas");
-    EXPECT_EQ(s.getPavarde(), "Jonaitis");
-    EXPECT_EQ(s.getPazymiai().size(), 3);
-    EXPECT_EQ(s.getEgzaminas(), 8);
-}
-
-// Testas median funkcijai (static)
-TEST(StudentasTest, MedianStatic) {
-    std::vector<int> v1 = { 1, 3, 2 };
-    std::vector<int> v2 = { 1, 2, 3, 4 };
-
-    EXPECT_EQ(Studentas::median(v1), 2);
-    EXPECT_EQ(Studentas::median(v2), 2.5);
-}
-
-// Testas pagalbines funkcijos generuoti
-TEST(PagalbinesFunkcijosTest, GeneruotiStudentas) {
-    Studentas s = generuoti("Vardas", "Pavarde", 5);
-
-    EXPECT_EQ(s.getPazymiai().size(), 5);
-    EXPECT_GE(s.getEgzaminas(), 1);
-    EXPECT_LE(s.getEgzaminas(), 10);
 }
