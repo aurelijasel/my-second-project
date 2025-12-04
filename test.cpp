@@ -26,7 +26,7 @@ TEST(StudentasTest, Konstruktoriai) {
 
 // Testas prideti pazymi
 TEST(StudentasTest, PridetiPazymi) {
-    Studentas s("Ana", "Anait?");
+    Studentas s("Ana", "Anaite");
     s.pridetiPazymi(10);
 
     EXPECT_EQ(s.getPazymiai().size(), 1);
@@ -46,3 +46,4 @@ TEST(StudentasTest, SkaiciuokVidurkiMediana) {
     EXPECT_NEAR(s.getGalutinisVid(), nd_vid * 0.4 + 8 * 0.6, 1e-5);
     EXPECT_NEAR(s.getGalutinisMed(), nd_med * 0.4 + 8 * 0.6, 1e-5);
 }
+
