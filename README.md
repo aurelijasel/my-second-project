@@ -322,6 +322,22 @@ Dėl abstrakčių funkcijų neįmanoma sukurti Žmogus objekto, tik išvestinę 
 **Išvada:**
 Negalima sukurti Žmogus objekto, galima tik išvestinio - Studentas.
 
+## Unit testai
+Šiame projekte panaudoti keli unit testai, parašyti su **GoogleTest**. Tikslas – patikrinti pagrindinę Studentas klasės logiką: konstruktorius, pažymių pridėjimą, galutinio balo skaičiavimą.
+
+**Testų paleidimas**
+
+Jeigu norite paleisti testus, terminale įveskite:
+```
+ctest --output-on-failure
+```
+
+**Testų veikimo pavyzdys**
+
+Žemiau yra įkelta ekrano nuotrauka, parodanti sėkmingą testų vykdymą:
+
+<img width="1920" height="1080" alt="download1" src="https://github.com/user-attachments/assets/bbee6e44-041d-44f5-b970-d7b687d63287" />
+
 ## Rankinis įvedimas
 
 Įvedus studento duomenis rankiniu būdu, ekrane matomas objekto saugojimo atminties adresas:
@@ -360,3 +376,4 @@ Studento objektas saugomas adresu: 0000022402A862D0
 | v1.1 | Pakeista struct į class duomenų struktūrų apibrėžimuose, išlaikant tą patį programos veikimą. |
 | v1.2 | Pridėta Rule of Three demonstracija, perdengti >> / << operatoriai darbui su ekrano ir failo įvestimi/išvestimi. |
 | v1.5 | Pridėta abstrakti klasė Žmogus, iš kurios yra paveldimas Studentas |
+| v2.0 | Sukurta dokumentacija naudojant Doxygen, realizuoti keli unit testai. |
