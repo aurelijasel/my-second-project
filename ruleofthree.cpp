@@ -20,7 +20,7 @@ void demonstruotiruleofthree() {
         cout << "Originalus studentas (s1): " << s1 << endl;
 
         // Kopijavimo konstruktorius
-        Studentas s2 = s1;
+        Studentas s2(s1);
         cout << "Po kopijavimo konstruktoriaus (s2 = s1): " << s2 << endl;
 
         // Priskyrimo operatorius
@@ -32,7 +32,7 @@ void demonstruotiruleofthree() {
         s3 = s1;
         cout << "Po priskyrimo operatoriaus (s3 = s1): " << s3 << endl;
 
-        // Savęs priskyrimas
+        // Saves priskyrimas
         s1 = s1;
         cout << "Po saves priskyrimo (s1 = s1): " << s1 << endl;
 
