@@ -336,7 +336,7 @@ ctest --output-on-failure
 
 Žemiau yra įkelta ekrano nuotrauka, parodanti sėkmingą testų vykdymą:
 
-<img width="1920" height="1080" alt="download1" src="https://github.com/user-attachments/assets/bbee6e44-041d-44f5-b970-d7b687d63287" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/15d4110d-da49-4a5e-9949-c63ed8445a48" />
 
 ## Rankinis įvedimas
 
